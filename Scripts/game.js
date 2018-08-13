@@ -47,7 +47,7 @@ function setup()
 	// set up all the 3D objects in the scene	
 	createScene(function(){
         //start creating items for the game
-        itemManagement();
+        //itemManagement();
 
 		//draw the scene
 		draw();
@@ -257,12 +257,12 @@ var createGround = function(){
         }
     );
 };
-blaaaa
+
 function createScene(f)
 {
 	// set the scene size
 	var WIDTH = 1000,
-	  HEIGHT = 600;
+	  HEIGHT = 400;
 
 	// set some camera attributes
 	var VIEW_ANGLE = 50,
@@ -319,7 +319,6 @@ function createScene(f)
 			rings),
 
 		sphereMaterial);
-
 	// // add the sphere to the scene
 	scene.add(ball);
 
@@ -352,7 +351,7 @@ function createScene(f)
 	scene.add(spotLight);
 
 	// MAGIC SHADOW CREATOR DELUXE EDITION with Lights PackTM DLC
-	renderer.shadowMapEnabled = true;
+	renderer.shadowMap.enable = true;
 
 	$.when(createPaddles(), createTable(), createPlane(), createGround()).then( function(){
         $("body").removeClass("loading");
@@ -434,7 +433,6 @@ function itemManagement() {
         console.log(Math.floor(Math.random() * fieldWidth) -fieldWidth/2);
         newItem.position.y = Math.floor(Math.random() * fieldHeight)  - fieldHeight/2  ;
         console.log(Math.floor(Math.random() * fieldHeight)  -fieldHeight/2);
-        console.log();
         // set new Item above the table surface
         newItem.receiveShadow = true;
         newItem.castShadow = true;
@@ -603,7 +601,6 @@ function cameraPhysics()
 function paddlePhysics()
 {
 	// PLAYER PADDLE LOGIC
-	
 	// if ball is aligned with paddle1 on x plane
 	// remember the position is the CENTER of the object
 	// we only check between the front and the middle of the paddle (one-way collision)
